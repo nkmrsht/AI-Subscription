@@ -234,7 +234,7 @@ const SERVICES: ServiceUpdate[] = [
     id: "replit_core",
     name: "Replit Core",
     company: "Replit",
-    price: 10,
+    price: 7,
     currency: "USD",
     billingCycle: "monthly",
     lastUpdated: new Date().toISOString()
@@ -243,7 +243,7 @@ const SERVICES: ServiceUpdate[] = [
     id: "replit_pro",
     name: "Replit Pro",
     company: "Replit",
-    price: 25,
+    price: 12,
     currency: "USD",
     billingCycle: "monthly",
     lastUpdated: new Date().toISOString()
@@ -257,13 +257,22 @@ const SERVICES: ServiceUpdate[] = [
     billingCycle: "monthly",
     lastUpdated: new Date().toISOString()
   },
+  {
+    id: "replit_teams_for_education",
+    name: "Replit Teams for Education",
+    company: "Replit",
+    price: 12,
+    currency: "USD",
+    billingCycle: "monthly",
+    lastUpdated: new Date().toISOString()
+  },
   
   // Microsoft
   {
-    id: "microsoft_copilot_personal",
-    name: "Microsoft Copilot",
+    id: "microsoft_copilot_free",
+    name: "Microsoft Copilot Free",
     company: "Microsoft",
-    price: 20,
+    price: 0,
     currency: "USD",
     billingCycle: "monthly",
     lastUpdated: new Date().toISOString()
@@ -272,7 +281,7 @@ const SERVICES: ServiceUpdate[] = [
     id: "microsoft_copilot_pro",
     name: "Microsoft Copilot Pro",
     company: "Microsoft",
-    price: 30,
+    price: 20,
     currency: "USD",
     billingCycle: "monthly",
     lastUpdated: new Date().toISOString()

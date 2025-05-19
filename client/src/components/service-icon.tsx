@@ -73,7 +73,7 @@ const serviceIconMap: Record<string, React.ReactNode> = {
   'Replit Teams Pro': <FileCode className="w-full h-full p-1 text-[#F26207]" />,
   
   // Microsoft
-  'Microsoft Copilot': <Code className="w-full h-full p-1 text-[#00A4EF]" />,
+  'Microsoft Copilot Free': <Code className="w-full h-full p-1 text-[#00A4EF]" />,
   'Microsoft Copilot Pro': <Code className="w-full h-full p-1 text-[#00A4EF]" />,
   'Microsoft Copilot for Business': <Code className="w-full h-full p-1 text-[#00A4EF]" />,
   'Microsoft Copilot for M365': <Code className="w-full h-full p-1 text-[#00A4EF]" />,

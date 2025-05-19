@@ -226,18 +226,18 @@ export const AI_SERVICES = {
     billingCycle: "monthly"
   },
   
-  // Replit
+  // Replit (公式サイトの料金を反映)
   replit_core: {
     name: "Replit Core",
     company: "Replit",
-    price: 10,
+    price: 7,
     currency: "USD",
     billingCycle: "monthly"
   },
   replit_pro: {
     name: "Replit Pro",
     company: "Replit",
-    price: 25,
+    price: 12,
     currency: "USD",
     billingCycle: "monthly"
   },
@@ -251,23 +251,23 @@ export const AI_SERVICES = {
   replit_teams_pro: {
     name: "Replit Teams Pro",
     company: "Replit",
-    price: 25,
+    price: 20,
     currency: "USD",
     billingCycle: "monthly"
   },
   
-  // Microsoft Copilot
-  microsoft_copilot_personal: {
-    name: "Microsoft Copilot",
+  // Microsoft Copilot (公式サイトの料金を反映)
+  microsoft_copilot_free: {
+    name: "Microsoft Copilot Free",
     company: "Microsoft",
-    price: 20,
+    price: 0,
     currency: "USD",
     billingCycle: "monthly"
   },
   microsoft_copilot_pro: {
     name: "Microsoft Copilot Pro",
     company: "Microsoft",
-    price: 30,
+    price: 20,
     currency: "USD",
     billingCycle: "monthly"
   },
