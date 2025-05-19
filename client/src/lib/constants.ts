@@ -11,9 +11,9 @@ export const AI_SERVICES = {
   chatgpt_pro: {
     name: "ChatGPT Pro",
     company: "OpenAI", 
-    price: 200,
+    price: 240,
     currency: "USD",
-    billingCycle: "monthly"
+    billingCycle: "yearly"
   },
   chatgpt_team: {
     name: "ChatGPT Team",
@@ -68,10 +68,10 @@ export const AI_SERVICES = {
   },
   
   // Anthropic
-  claude_basic: {
-    name: "Claude Basic",
+  claude_free: {
+    name: "Claude Free",
     company: "Anthropic",
-    price: 8,
+    price: 0,
     currency: "USD",
     billingCycle: "monthly"
   },
@@ -89,10 +89,17 @@ export const AI_SERVICES = {
     currency: "USD",
     billingCycle: "monthly"
   },
+  claude_business: {
+    name: "Claude Business",
+    company: "Anthropic",
+    price: 35,
+    currency: "USD",
+    billingCycle: "monthly"
+  },
   claude_enterprise: {
     name: "Claude Enterprise",
     company: "Anthropic",
-    price: 60,
+    price: 100,
     currency: "USD",
     billingCycle: "monthly"
   },
@@ -223,28 +230,28 @@ export const AI_SERVICES = {
   replit_core: {
     name: "Replit Core",
     company: "Replit",
-    price: 7,
+    price: 10,
     currency: "USD",
     billingCycle: "monthly"
   },
   replit_pro: {
     name: "Replit Pro",
     company: "Replit",
-    price: 20,
+    price: 25,
     currency: "USD",
     billingCycle: "monthly"
   },
   replit_teams_for_education: {
     name: "Replit Teams for Education",
     company: "Replit",
-    price: 10,
+    price: 12,
     currency: "USD",
     billingCycle: "monthly"
   },
   replit_teams_pro: {
     name: "Replit Teams Pro",
     company: "Replit",
-    price: 20,
+    price: 25,
     currency: "USD",
     billingCycle: "monthly"
   },

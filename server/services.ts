@@ -29,9 +29,9 @@ const SERVICES: ServiceUpdate[] = [
     id: "chatgpt_pro",
     name: "ChatGPT Pro",
     company: "OpenAI",
-    price: 200,
+    price: 240,
     currency: "USD",
-    billingCycle: "monthly",
+    billingCycle: "yearly",
     lastUpdated: new Date().toISOString()
   },
   {
@@ -84,10 +84,10 @@ const SERVICES: ServiceUpdate[] = [
   
   // Anthropic
   {
-    id: "claude_basic",
-    name: "Claude Basic",
+    id: "claude_free",
+    name: "Claude Free",
     company: "Anthropic",
-    price: 8,
+    price: 0,
     currency: "USD",
     billingCycle: "monthly",
     lastUpdated: new Date().toISOString()
@@ -106,6 +106,15 @@ const SERVICES: ServiceUpdate[] = [
     name: "Claude Team",
     company: "Anthropic",
     price: 30,
+    currency: "USD",
+    billingCycle: "monthly",
+    lastUpdated: new Date().toISOString()
+  },
+  {
+    id: "claude_business",
+    name: "Claude Business",
+    company: "Anthropic",
+    price: 35,
     currency: "USD",
     billingCycle: "monthly",
     lastUpdated: new Date().toISOString()
@@ -225,7 +234,7 @@ const SERVICES: ServiceUpdate[] = [
     id: "replit_core",
     name: "Replit Core",
     company: "Replit",
-    price: 7,
+    price: 10,
     currency: "USD",
     billingCycle: "monthly",
     lastUpdated: new Date().toISOString()
@@ -234,7 +243,7 @@ const SERVICES: ServiceUpdate[] = [
     id: "replit_pro",
     name: "Replit Pro",
     company: "Replit",
-    price: 20,
+    price: 25,
     currency: "USD",
     billingCycle: "monthly",
     lastUpdated: new Date().toISOString()

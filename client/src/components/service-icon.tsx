@@ -34,9 +34,10 @@ const serviceIconMap: Record<string, React.ReactNode> = {
   'Gemini Enterprise': <SiGoogle className="w-full h-full p-1 text-[#4285F4]" />,
   
   // Anthropic
-  'Claude Basic': <Sparkles className="w-full h-full p-1 text-[#8A3FFC]" />,
+  'Claude Free': <Sparkles className="w-full h-full p-1 text-[#8A3FFC]" />,
   'Claude Pro': <Sparkles className="w-full h-full p-1 text-[#8A3FFC]" />,
   'Claude Team': <Sparkles className="w-full h-full p-1 text-[#8A3FFC]" />,
+  'Claude Business': <Sparkles className="w-full h-full p-1 text-[#8A3FFC]" />,
   'Claude Enterprise': <Sparkles className="w-full h-full p-1 text-[#8A3FFC]" />,
   
   // Notion
