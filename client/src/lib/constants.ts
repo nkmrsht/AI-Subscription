@@ -8,6 +8,13 @@ export const AI_SERVICES = {
     currency: "USD",
     billingCycle: "monthly"
   },
+  chatgpt_pro: {
+    name: "ChatGPT Pro",
+    company: "OpenAI", 
+    price: 200,
+    currency: "USD",
+    billingCycle: "monthly"
+  },
   chatgpt_team: {
     name: "ChatGPT Team",
     company: "OpenAI",

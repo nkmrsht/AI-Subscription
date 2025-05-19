@@ -22,6 +22,7 @@ import {
 const serviceIconMap: Record<string, React.ReactNode> = {
   // OpenAI
   'ChatGPT Plus': <SiOpenai className="w-full h-full p-1 text-[#00A67E]" />,
+  'ChatGPT Pro': <SiOpenai className="w-full h-full p-1 text-[#00A67E]" />,
   'ChatGPT Team': <SiOpenai className="w-full h-full p-1 text-[#00A67E]" />,
   'ChatGPT Enterprise': <SiOpenai className="w-full h-full p-1 text-[#00A67E]" />,
   'OpenAI API Pro': <SiOpenai className="w-full h-full p-1 text-[#00A67E]" />,

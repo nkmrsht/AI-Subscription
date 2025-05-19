@@ -26,6 +26,15 @@ const SERVICES: ServiceUpdate[] = [
     lastUpdated: new Date().toISOString()
   },
   {
+    id: "chatgpt_pro",
+    name: "ChatGPT Pro",
+    company: "OpenAI",
+    price: 200,
+    currency: "USD",
+    billingCycle: "monthly",
+    lastUpdated: new Date().toISOString()
+  },
+  {
     id: "chatgpt_team",
     name: "ChatGPT Team",
     company: "OpenAI",
