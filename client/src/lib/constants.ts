@@ -3,6 +3,55 @@
 import { AIServiceDefinition } from "./types";
 
 export const AI_SERVICES_DEFINITIONS: Record<string, AIServiceDefinition> = {
+  // Notion (2025年5月更新)
+  notion: {
+    id: "notion",
+    name: "Notion AI",
+    company: "Notion",
+    plans: [
+      {
+        id: "notion_free",
+        name: "Notion Free",
+        pricing: {
+          monthly: {
+            price: 0,
+            currency: "USD"
+          }
+        },
+        features: ["基本機能", "限定された使用量"]
+      },
+      {
+        id: "notion_ai_personal",
+        name: "Notion AI Personal",
+        pricing: {
+          monthly: {
+            price: 10,
+            currency: "USD"
+          },
+          yearly: {
+            price: 96,  // 年額$96 (月額$8相当、20%割引)
+            currency: "USD"
+          }
+        },
+        features: ["文章作成支援", "要約生成", "翻訳機能"]
+      },
+      {
+        id: "notion_ai_plus",
+        name: "Notion AI Plus",
+        pricing: {
+          monthly: {
+            price: 20,
+            currency: "USD"
+          },
+          yearly: {
+            price: 192,  // 年額$192 (月額$16相当、20%割引)
+            currency: "USD"
+          }
+        },
+        features: ["高度なAI機能", "無制限の使用量", "カスタマイズオプション"]
+      }
+    ]
+  },
   // OpenAI (2025年5月更新)
   openai: {
     id: "openai",
@@ -114,6 +163,56 @@ export const AI_SERVICES_DEFINITIONS: Record<string, AIServiceDefinition> = {
     ]
   },
   
+  // Anthropic Claude (2025年5月更新)
+  claude: {
+    id: "claude",
+    name: "Claude",
+    company: "Anthropic",
+    plans: [
+      {
+        id: "claude_free",
+        name: "Claude Free",
+        pricing: {
+          monthly: {
+            price: 0,
+            currency: "USD"
+          }
+        },
+        features: ["基本機能", "Claude 3 Haiku", "利用制限あり"]
+      },
+      {
+        id: "claude_pro",
+        name: "Claude Pro",
+        pricing: {
+          monthly: {
+            price: 20,
+            currency: "USD"
+          },
+          yearly: {
+            price: 192,  // 年額$192 (月額$16相当、20%割引)
+            currency: "USD"
+          }
+        },
+        features: ["Claude 3 Opus/Sonnet/Haiku", "高速レスポンス", "高い使用上限"]
+      },
+      {
+        id: "claude_team",
+        name: "Claude Team",
+        pricing: {
+          monthly: {
+            price: 30,
+            currency: "USD"
+          },
+          yearly: {
+            price: 288,  // 年額$288 (月額$24相当、20%割引)
+            currency: "USD"
+          }
+        },
+        features: ["チーム利用", "共有ワークスペース", "管理機能"]
+      }
+    ]
+  },
+
   // Google (2025年5月更新)
   google: {
     id: "google",
