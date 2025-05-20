@@ -89,12 +89,19 @@ function getServiceInitials(serviceName: string): string {
   // 特定のサービスは専用の短縮形を使用
   const nameMap: Record<string, string> = {
     'ChatGPT': 'GPT',
-    'Claude': 'C',
-    'Gemini': 'G',
-    'Notion': 'N',
-    'GitHub': 'GH',
-    'Replit': 'R',
-    'Microsoft': 'MS'
+    'OpenAI': 'GPT',
+    'Claude': 'CLD',
+    'Anthropic': 'CLD',
+    'Gemini': 'GEM',
+    'Google': 'GEM',
+    'Notion': 'NOT',
+    'GitHub': 'GIT',
+    'Microsoft': 'MS',
+    'Replit': 'REP',
+    'Midjourney': 'MID',
+    'Genspark': 'GEN',
+    'Stability': 'STB',
+    'Perplexity': 'PPX'
   };
   
   const serviceLower = serviceName.toLowerCase();
@@ -104,11 +111,13 @@ function getServiceInitials(serviceName: string): string {
     }
   }
   
-  // それ以外の場合は最初の1-2文字を使用
+  // それ以外の場合は最初の2-3文字を使用
   if (words.length === 1) {
-    return words[0].substring(0, 2).toUpperCase();
+    // 1つの単語なら最初の3文字
+    return words[0].substring(0, 3).toUpperCase();
   } else {
-    return (words[0][0] + (words[1] ? words[1][0] : '')).toUpperCase();
+    // 複数の単語なら最初の単語から2文字
+    return words[0].substring(0, 2).toUpperCase();
   }
 }
 
