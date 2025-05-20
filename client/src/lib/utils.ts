@@ -51,7 +51,7 @@ export function formatTimestamp(timestamp: number) {
  */
 export function getMonthlyJPYCost(
   subscription: AIService,
-  exchangeRates: { [key: string]: number }
+  exchangeRates: any
 ): number {
   // For JPY, no conversion needed
   if (subscription.currency === "JPY") {

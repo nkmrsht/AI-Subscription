@@ -13,8 +13,37 @@ import {
   FaPalette,
   FaGift,
   FaSitemap,
-  FaCloudDownloadAlt
+  FaCloudDownloadAlt,
+  FaTerminal,
+  FaKeyboard
 } from 'react-icons/fa';
+
+// サービス名とブランドカラー
+const serviceColors: Record<string, string> = {
+  // OpenAI/ChatGPT系
+  'ChatGPT': '#00A67E',
+  'OpenAI': '#00A67E',
+  
+  // Claude系
+  'Claude': '#EF764E',
+  'Anthropic': '#8A3FFC',
+  
+  // Google/Gemini系
+  'Gemini': '#8E44AD',
+  'Google': '#4285F4',
+  
+  // Notion系
+  'Notion': '#000000',
+  
+  // Replit系
+  'Replit': '#F26207',
+  
+  // その他のサービス
+  'GitHub': '#24292E',
+  'Microsoft': '#00A4EF',
+  'Midjourney': '#000000',
+  'Genspark': '#FF6B00'
+};
 
 // 各サービスの最新ロゴを使用
 const serviceIconMap: Record<string, React.ReactNode> = {
@@ -49,10 +78,10 @@ const serviceIconMap: Record<string, React.ReactNode> = {
   
   // Notion
   'Notion': <FaBook className="w-full h-full p-1 text-black" />,
-  'Notion AI': <FaBook className="w-full h-full p-1 text-black" />,
-  'Notion AI Personal': <FaBook className="w-full h-full p-1 text-black" />,
-  'Notion AI Plus': <FaBook className="w-full h-full p-1 text-black" />,
-  'Notion AI Business': <FaBook className="w-full h-full p-1 text-black" />,
+  'Notion AI': <FaTerminal className="w-full h-full p-1 text-black" />,
+  'Notion AI Personal': <FaTerminal className="w-full h-full p-1 text-black" />,
+  'Notion AI Plus': <FaTerminal className="w-full h-full p-1 text-black" />,
+  'Notion AI Business': <FaTerminal className="w-full h-full p-1 text-black" />,
   
   // GitHub Copilot
   'GitHub': <FaCode className="w-full h-full p-1 text-[#24292e]" />,
