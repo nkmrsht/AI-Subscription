@@ -9,7 +9,7 @@ import {
 } from "@/lib/utils";
 import { AIService, ExchangeRates } from "@/lib/types";
 import { BILLING_CYCLES } from "@/lib/constants";
-import { ServiceBadge } from "./service-badge";
+import { ServiceLogoSimple } from "./service-logo-simple";
 
 interface SubscriptionCardProps {
   subscription: AIService;
@@ -37,7 +37,7 @@ export function SubscriptionCard({
       <CardContent className="p-5">
         <div className="flex items-start justify-between mb-3">
           <div className="flex items-center">
-            <ServiceLogoV2 serviceName={subscription.name} className="w-10 h-10 rounded-lg mr-3" />
+            <ServiceCode serviceName={subscription.name} className="w-10 h-10 rounded-lg mr-3" />
             <div>
               <h3 className="font-bold text-neutral-800">{subscription.name}</h3>
               <div className="text-sm text-neutral-500">{subscription.company}</div>
