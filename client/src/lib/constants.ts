@@ -226,32 +226,32 @@ export const AI_SERVICES = {
     billingCycle: "monthly"
   },
   
-  // Replit (公式サイトの料金を反映)
+  // Replit (公式サイトの料金を反映 - 2025年5月更新)
   replit_core: {
     name: "Replit Core",
     company: "Replit",
-    price: 7,
+    price: 25,
     currency: "USD",
     billingCycle: "monthly"
   },
   replit_pro: {
     name: "Replit Pro",
     company: "Replit",
-    price: 12,
+    price: 20,
     currency: "USD",
     billingCycle: "monthly"
   },
   replit_teams_for_education: {
     name: "Replit Teams for Education",
     company: "Replit",
-    price: 12,
+    price: 15,
     currency: "USD",
     billingCycle: "monthly"
   },
   replit_teams_pro: {
     name: "Replit Teams Pro",
     company: "Replit",
-    price: 20,
+    price: 35,
     currency: "USD",
     billingCycle: "monthly"
   },
