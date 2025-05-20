@@ -3,7 +3,7 @@
 import { AIServiceDefinition } from "./types";
 
 export const AI_SERVICES_DEFINITIONS: Record<string, AIServiceDefinition> = {
-  // OpenAI
+  // OpenAI (2025年5月更新)
   openai: {
     id: "openai",
     name: "ChatGPT / OpenAI",
@@ -29,7 +29,7 @@ export const AI_SERVICES_DEFINITIONS: Record<string, AIServiceDefinition> = {
             currency: "USD"
           },
           yearly: {
-            price: 200,
+            price: 192,  // 年額$192 (月額$16相当、20%割引)
             currency: "USD"
           }
         },
@@ -44,7 +44,7 @@ export const AI_SERVICES_DEFINITIONS: Record<string, AIServiceDefinition> = {
             currency: "USD"
           },
           yearly: {
-            price: 300,
+            price: 288,  // 年額$288 (月額$24相当、20%割引)
             currency: "USD"
           }
         },
@@ -64,7 +64,76 @@ export const AI_SERVICES_DEFINITIONS: Record<string, AIServiceDefinition> = {
     ]
   },
   
-  // Google
+  // Genspark (2025年5月追加)
+  genspark: {
+    id: "genspark",
+    name: "Genspark",
+    company: "Genspark AI",
+    plans: [
+      {
+        id: "genspark_basic",
+        name: "Genspark Basic",
+        pricing: {
+          monthly: {
+            price: 10,
+            currency: "USD"
+          },
+          yearly: {
+            price: 96,  // 年額$96 (月額$8相当、20%割引)
+            currency: "USD"
+          }
+        },
+        features: ["基本AI機能", "テキスト生成", "文章作成支援"]
+      },
+      {
+        id: "genspark_pro",
+        name: "Genspark Pro",
+        pricing: {
+          monthly: {
+            price: 25,
+            currency: "USD"
+          },
+          yearly: {
+            price: 240,  // 年額$240 (月額$20相当、20%割引)
+            currency: "USD"
+          }
+        },
+        features: ["高度なAI機能", "画像生成", "API アクセス"]
+      },
+      {
+        id: "genspark_business",
+        name: "Genspark Business",
+        pricing: {
+          monthly: {
+            price: 50,
+            currency: "USD"
+          },
+          yearly: {
+            price: 480,  // 年額$480 (月額$40相当、20%割引)
+            currency: "USD"
+          }
+        },
+        features: ["ビジネス向け機能", "チーム管理", "分析ツール"]
+      },
+      {
+        id: "genspark_enterprise",
+        name: "Genspark Enterprise",
+        pricing: {
+          monthly: {
+            price: 100,
+            currency: "USD"
+          },
+          yearly: {
+            price: 960,  // 年額$960 (月額$80相当、20%割引)
+            currency: "USD"
+          }
+        },
+        features: ["エンタープライズセキュリティ", "カスタマイズ可能なモデル", "専用サポート"]
+      }
+    ]
+  },
+  
+  // Google (2025年5月更新)
   google: {
     id: "google",
     name: "Gemini",
@@ -90,7 +159,7 @@ export const AI_SERVICES_DEFINITIONS: Record<string, AIServiceDefinition> = {
             currency: "USD"
           },
           yearly: {
-            price: 199.99,
+            price: 174.99,  // 年額$174.99 (月額$14.58相当、約27%割引)
             currency: "USD"
           }
         },
@@ -105,7 +174,7 @@ export const AI_SERVICES_DEFINITIONS: Record<string, AIServiceDefinition> = {
             currency: "USD"
           },
           yearly: {
-            price: 300,
+            price: 240,  // 年額$240 (月額$20相当、約33%割引)
             currency: "USD"
           }
         },
@@ -117,6 +186,10 @@ export const AI_SERVICES_DEFINITIONS: Record<string, AIServiceDefinition> = {
         pricing: {
           monthly: {
             price: 50,
+            currency: "USD"
+          },
+          yearly: {
+            price: 480,  // 年額$480 (月額$40相当、20%割引)
             currency: "USD"
           }
         },

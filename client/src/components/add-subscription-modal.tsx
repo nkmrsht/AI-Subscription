@@ -284,9 +284,17 @@ export function AddSubscriptionModal({
                       <div className="flex justify-between items-center mb-1">
                         <div className="font-medium">{plan.name}</div>
                         {plan.pricing.monthly && (
-                          <div className="text-sm text-neutral-600">
-                            {formatCurrency(plan.pricing.monthly.price, plan.pricing.monthly.currency)}/{' '}
-                            <span className="text-xs">月</span>
+                          <div className="flex flex-col items-end">
+                            <div className="text-sm text-neutral-600">
+                              {formatCurrency(plan.pricing.monthly.price, plan.pricing.monthly.currency)}/{' '}
+                              <span className="text-xs">月</span>
+                            </div>
+                            {plan.pricing.yearly && (
+                              <div className="text-xs text-green-600">
+                                年払い: {formatCurrency(plan.pricing.yearly.price / 12, plan.pricing.yearly.currency)}/{' '}
+                                <span className="text-xs">月</span>
+                              </div>
+                            )}
                           </div>
                         )}
                       </div>
@@ -358,15 +366,43 @@ export function AddSubscriptionModal({
                       </div>
                     </div>
                     
-                    {/* 年払いの場合は月額換算を表示 */}
+                    {/* 月額/年額換算を表示 */}
                     {billingCycle === "yearly" && selectedPlan.pricing.yearly && (
                       <div className="flex justify-between items-center mt-1">
                         <div className="text-xs text-neutral-500">月額換算</div>
-                        <div className="text-sm text-neutral-600">
+                        <div className="text-sm text-green-600">
                           {formatCurrency(
                             selectedPlan.pricing.yearly.price / 12, 
                             selectedPlan.pricing.yearly.currency
                           )} / 月
+                        </div>
+                      </div>
+                    )}
+                    
+                    {/* 月払いの場合は年額換算を表示 */}
+                    {billingCycle === "monthly" && selectedPlan.pricing.monthly && (
+                      <div className="flex justify-between items-center mt-1">
+                        <div className="text-xs text-neutral-500">年額換算</div>
+                        <div className="text-sm text-neutral-600">
+                          {formatCurrency(
+                            selectedPlan.pricing.monthly.price * 12, 
+                            selectedPlan.pricing.monthly.currency
+                          )} / 年
+                        </div>
+                      </div>
+                    )}
+                    
+                    {/* 月払いの場合で年払いオプションがある場合、割引率も表示 */}
+                    {billingCycle === "monthly" && selectedPlan.pricing.yearly && selectedPlan.pricing.monthly && (
+                      <div className="flex justify-between items-center mt-1">
+                        <div className="text-xs text-neutral-500">年払い割引</div>
+                        <div className="text-sm text-green-600">
+                          {(() => {
+                            const monthlyTotal = selectedPlan.pricing.monthly.price * 12;
+                            const yearlyPrice = selectedPlan.pricing.yearly.price;
+                            const discountPercent = Math.round((1 - yearlyPrice / monthlyTotal) * 100);
+                            return `${discountPercent}% OFF`;
+                          })()}
                         </div>
                       </div>
                     )}

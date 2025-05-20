@@ -4,7 +4,8 @@ import {
   SiGoogle, 
   SiGithub, 
   SiNotion, 
-  SiAdobe
+  SiAdobe,
+  SiReplit
 } from 'react-icons/si';
 import { 
   Bot, 
@@ -15,16 +16,19 @@ import {
   Code, 
   Rocket,
   FileCode,
-  Palette
+  Palette,
+  BrainCircuit
 } from 'lucide-react';
 
-// Map service names to icons
+// 各サービスの最新ロゴを使用
 const serviceIconMap: Record<string, React.ReactNode> = {
+  // サービス名によるマッピング
   // OpenAI
   'ChatGPT Plus': <SiOpenai className="w-full h-full p-1 text-[#00A67E]" />,
   'ChatGPT Pro': <SiOpenai className="w-full h-full p-1 text-[#00A67E]" />,
   'ChatGPT Team': <SiOpenai className="w-full h-full p-1 text-[#00A67E]" />,
   'ChatGPT Enterprise': <SiOpenai className="w-full h-full p-1 text-[#00A67E]" />,
+  'ChatGPT Free': <SiOpenai className="w-full h-full p-1 text-[#00A67E]" />,
   'OpenAI API Pro': <SiOpenai className="w-full h-full p-1 text-[#00A67E]" />,
   'OpenAI API Team': <SiOpenai className="w-full h-full p-1 text-[#00A67E]" />,
   
@@ -32,6 +36,7 @@ const serviceIconMap: Record<string, React.ReactNode> = {
   'Gemini Advanced': <SiGoogle className="w-full h-full p-1 text-[#4285F4]" />,
   'Gemini Business': <SiGoogle className="w-full h-full p-1 text-[#4285F4]" />,
   'Gemini Enterprise': <SiGoogle className="w-full h-full p-1 text-[#4285F4]" />,
+  'Gemini Free': <SiGoogle className="w-full h-full p-1 text-[#4285F4]" />,
   
   // Anthropic
   'Claude Free': <Sparkles className="w-full h-full p-1 text-[#8A3FFC]" />,
@@ -67,10 +72,11 @@ const serviceIconMap: Record<string, React.ReactNode> = {
   'Perplexity Business': <Bot className="w-full h-full p-1 text-[#2563EB]" />,
   
   // Replit
-  'Replit Core': <FileCode className="w-full h-full p-1 text-[#F26207]" />,
-  'Replit Pro': <FileCode className="w-full h-full p-1 text-[#F26207]" />,
-  'Replit Teams for Education': <FileCode className="w-full h-full p-1 text-[#F26207]" />,
-  'Replit Teams Pro': <FileCode className="w-full h-full p-1 text-[#F26207]" />,
+  'Replit Core': <SiReplit className="w-full h-full p-1 text-[#F26207]" />,
+  'Replit Pro': <SiReplit className="w-full h-full p-1 text-[#F26207]" />,
+  'Replit Free': <SiReplit className="w-full h-full p-1 text-[#F26207]" />,
+  'Replit Teams for Education': <SiReplit className="w-full h-full p-1 text-[#F26207]" />,
+  'Replit Teams Pro': <SiReplit className="w-full h-full p-1 text-[#F26207]" />,
   
   // Microsoft
   'Microsoft Copilot Free': <Code className="w-full h-full p-1 text-[#00A4EF]" />,
@@ -91,7 +97,13 @@ const serviceIconMap: Record<string, React.ReactNode> = {
   // Leonardo.ai
   'Leonardo Premium': <Palette className="w-full h-full p-1 text-[#6F4FF0]" />,
   'Leonardo Pro': <Palette className="w-full h-full p-1 text-[#6F4FF0]" />,
-  'Leonardo Enterprise': <Palette className="w-full h-full p-1 text-[#6F4FF0]" />
+  'Leonardo Enterprise': <Palette className="w-full h-full p-1 text-[#6F4FF0]" />,
+  
+  // Genspark
+  'Genspark Basic': <BrainCircuit className="w-full h-full p-1 text-[#FF6B00]" />,
+  'Genspark Pro': <BrainCircuit className="w-full h-full p-1 text-[#FF6B00]" />,
+  'Genspark Business': <BrainCircuit className="w-full h-full p-1 text-[#FF6B00]" />,
+  'Genspark Enterprise': <BrainCircuit className="w-full h-full p-1 text-[#FF6B00]" />
 };
 
 // A default color palette for services without specific colors
@@ -110,8 +122,34 @@ interface ServiceIconProps {
 }
 
 export function ServiceIcon({ serviceName, className = '' }: ServiceIconProps) {
-  // Check if we have a predefined icon for this service
-  const icon = serviceIconMap[serviceName];
+  // まず正確なサービス名でアイコンを検索
+  let icon = serviceIconMap[serviceName];
+  
+  // 正確な名前で見つからない場合は、サービス名の一部を含むものを検索
+  if (!icon) {
+    // サービス名をキーワードに分解
+    const keywords = serviceName.toLowerCase().split(/[\s-]/);
+    
+    // サービス名の一部を含むキーを検索
+    for (const key of Object.keys(serviceIconMap)) {
+      const keyLower = key.toLowerCase();
+      if (keywords.some(keyword => keyLower.includes(keyword) && keyword.length > 3)) {
+        icon = serviceIconMap[key];
+        break;
+      }
+    }
+  }
+  
+  // 会社名も抽出してみる
+  if (!icon && serviceName.includes(' - ')) {
+    const companyPart = serviceName.split(' - ')[0].trim();
+    for (const key of Object.keys(serviceIconMap)) {
+      if (key.startsWith(companyPart)) {
+        icon = serviceIconMap[key];
+        break;
+      }
+    }
+  }
   
   if (icon) {
     return (
@@ -121,7 +159,7 @@ export function ServiceIcon({ serviceName, className = '' }: ServiceIconProps) {
     );
   }
   
-  // For services without an icon, generate a colored box with first letter
+  // アイコンが見つからない場合はフォールバック
   const firstLetter = serviceName.charAt(0).toUpperCase();
   const colorIndex = serviceName.charCodeAt(0) % defaultColors.length;
   const bgColorClass = defaultColors[colorIndex];
