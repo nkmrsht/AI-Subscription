@@ -10,45 +10,64 @@ export const AI_SERVICES_DEFINITIONS: Record<string, AIServiceDefinition> = {
     company: "Notion",
     plans: [
       {
-        id: "notion_free",
-        name: "Notion Free",
+        id: "notion_ai",
+        name: "Notion AI",
         pricing: {
           monthly: {
-            price: 0,
-            currency: "USD"
-          }
-        },
-        features: ["基本機能", "限定された使用量"]
-      },
-      {
-        id: "notion_ai_personal",
-        name: "Notion AI Personal",
-        pricing: {
-          monthly: {
-            price: 10,
+            price: 8,
             currency: "USD"
           },
           yearly: {
-            price: 96,  // 年額$96 (月額$8相当、20%割引)
+            price: 96,  // 年額$96 (月額$8相当)
             currency: "USD"
           }
         },
-        features: ["文章作成支援", "要約生成", "翻訳機能"]
+        features: ["記事作成支援", "要約生成", "翻訳機能", "テキスト校正", "アイデア発想"]
       },
       {
-        id: "notion_ai_plus",
-        name: "Notion AI Plus",
+        id: "notion_personal",
+        name: "Personal Pro (+ Notion AI)",
         pricing: {
           monthly: {
-            price: 20,
+            price: 15,
             currency: "USD"
           },
           yearly: {
-            price: 192,  // 年額$192 (月額$16相当、20%割引)
+            price: 144,  // 年額$144 (月額$12相当、20%割引)
             currency: "USD"
           }
         },
-        features: ["高度なAI機能", "無制限の使用量", "カスタマイズオプション"]
+        features: ["Personal Proのすべての機能", "Notion AIの全機能", "ファイル容量10GB", "無制限のブロック"]
+      },
+      {
+        id: "notion_team",
+        name: "Team (+ Notion AI)",
+        pricing: {
+          monthly: {
+            price: 24,
+            currency: "USD"
+          },
+          yearly: {
+            price: 240,  // 年額$240 (月額$20相当、約17%割引)
+            currency: "USD"
+          }
+        },
+        features: ["チーム機能", "共同編集", "高度な権限設定", "Notion AIの全機能", "無制限のゲスト"]
+      },
+      {
+        id: "notion_business",
+        name: "Business (+ Notion AI)",
+        pricing: {
+          monthly: {
+            price: 32,
+            currency: "USD"
+          },
+          yearly: {
+            price: 336,  // 年額$336 (月額$28相当、約13%割引)
+            currency: "USD"
+          }
+        },
+        features: ["ビジネス機能", "SAML SSO", "高度な管理機能", "Notion AIの全機能", "監査ログ"]
       }
     ]
   },
