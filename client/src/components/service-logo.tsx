@@ -1,68 +1,98 @@
 import React from 'react';
 
-// PNGロゴのインポート
-import openaiLogo from '../assets/logos/openai-logo.png';
-import notionLogo from '../assets/logos/notion-logo.png';
-import geminiLogo from '../assets/logos/gemini-logo.png';
-import claudeLogo from '../assets/logos/claude-logo.png';
-import replitLogo from '../assets/logos/replit-logo.png';
-
-// サービス名と対応するロゴのマッピング
-const serviceLogoMap: Record<string, string> = {
-  // OpenAI
-  'ChatGPT': openaiLogo,
-  'ChatGPT Plus': openaiLogo,
-  'ChatGPT Pro': openaiLogo,
-  'ChatGPT Team': openaiLogo,
-  'ChatGPT Enterprise': openaiLogo,
-  'ChatGPT Free': openaiLogo,
-  'OpenAI': openaiLogo,
-  'OpenAI API': openaiLogo,
-  'OpenAI API Pro': openaiLogo,
-  'OpenAI API Team': openaiLogo,
+// サービスブランドカラー
+const brandColors: Record<string, string> = {
+  // OpenAI / ChatGPT
+  'ChatGPT': '#00A67E',
+  'OpenAI': '#00A67E',
   
   // Google Gemini
-  'Gemini': geminiLogo,
-  'Gemini Advanced': geminiLogo,
-  'Gemini Business': geminiLogo,
-  'Gemini Enterprise': geminiLogo,
-  'Gemini Free': geminiLogo,
-  'Google': geminiLogo,
+  'Gemini': '#8E44AD',
+  'Google': '#4285F4',
   
   // Anthropic Claude
-  'Claude': claudeLogo,
-  'Claude Free': claudeLogo,
-  'Claude Pro': claudeLogo,
-  'Claude Team': claudeLogo,
-  'Claude Business': claudeLogo,
-  'Claude Enterprise': claudeLogo,
-  'Anthropic': claudeLogo,
+  'Claude': '#EF764E',
+  'Anthropic': '#8A3FFC',
   
   // Notion
-  'Notion': notionLogo,
-  'Notion AI': notionLogo,
-  'Notion AI Personal': notionLogo,
-  'Notion AI Plus': notionLogo,
-  'Notion AI Business': notionLogo,
+  'Notion': '#000000',
+  
+  // GitHub Copilot
+  'GitHub': '#24292E',
+  
+  // Microsoft
+  'Microsoft': '#00A4EF',
   
   // Replit
-  'Replit': replitLogo,
-  'Replit Core': replitLogo,
-  'Replit Pro': replitLogo,
-  'Replit Free': replitLogo,
-  'Replit Teams for Education': replitLogo,
-  'Replit Teams Pro': replitLogo
+  'Replit': '#F26207',
+  
+  // Midjourney
+  'Midjourney': '#000000',
+  
+  // Perplexity
+  'Perplexity': '#2563EB',
+  
+  // Stability AI
+  'Stability': '#2D333B',
+  
+  // Genspark
+  'Genspark': '#FF6B00',
 };
 
-// デフォルトの色パレット
-const defaultColors = [
-  'bg-primary text-white',
-  'bg-secondary text-white',
-  'bg-emerald-500 text-white',
-  'bg-amber-500 text-white',
-  'bg-rose-500 text-white',
-  'bg-indigo-500 text-white'
-];
+// サービス名から表示するイニシャルを取得
+function getServiceInitials(serviceName: string): string {
+  // 会社名とサービス名が分かれている場合は分割
+  if (serviceName.includes(' - ')) {
+    const parts = serviceName.split(' - ');
+    serviceName = parts[0].trim(); // 会社名を使用
+  }
+
+  const words = serviceName.split(/\s+/);
+  
+  // 特定のサービスは専用の短縮形を使用
+  const nameMap: Record<string, string> = {
+    'ChatGPT': 'GPT',
+    'Claude': 'C',
+    'Gemini': 'G',
+    'Notion': 'N',
+    'GitHub': 'GH',
+    'Replit': 'R',
+    'Microsoft': 'MS'
+  };
+  
+  const serviceLower = serviceName.toLowerCase();
+  for (const [key, value] of Object.entries(nameMap)) {
+    if (serviceLower.includes(key.toLowerCase())) {
+      return value;
+    }
+  }
+  
+  // それ以外の場合は最初の1-2文字を使用
+  if (words.length === 1) {
+    return words[0].substring(0, 2).toUpperCase();
+  } else {
+    return (words[0][0] + (words[1] ? words[1][0] : '')).toUpperCase();
+  }
+}
+
+// サービス名からブランドカラーを取得
+function getBrandColor(serviceName: string): string {
+  const serviceLower = serviceName.toLowerCase();
+  
+  for (const [key, color] of Object.entries(brandColors)) {
+    if (serviceLower.includes(key.toLowerCase())) {
+      return color;
+    }
+  }
+  
+  // ブランドカラーが見つからない場合はハッシュ値から生成
+  const hash = serviceName.split('').reduce((acc, char) => {
+    return char.charCodeAt(0) + ((acc << 5) - acc);
+  }, 0);
+  
+  const h = Math.abs(hash) % 360;
+  return `hsl(${h}, 70%, 50%)`;
+}
 
 interface ServiceLogoProps {
   serviceName: string;
@@ -70,51 +100,15 @@ interface ServiceLogoProps {
 }
 
 export function ServiceLogo({ serviceName, className = '' }: ServiceLogoProps) {
-  // まず正確なサービス名でロゴを検索
-  let logoSrc = serviceLogoMap[serviceName];
-  
-  // 正確な名前で見つからない場合は、サービス名の一部を含むものを検索
-  if (!logoSrc) {
-    // サービス名をキーワードに分解
-    const keywords = serviceName.toLowerCase().split(/[\s-]/);
-    
-    // サービス名の一部を含むキーを検索
-    for (const key of Object.keys(serviceLogoMap)) {
-      const keyLower = key.toLowerCase();
-      if (keywords.some(keyword => keyLower.includes(keyword) && keyword.length > 3)) {
-        logoSrc = serviceLogoMap[key];
-        break;
-      }
-    }
-  }
-  
-  // 会社名も抽出してみる
-  if (!logoSrc && serviceName.includes(' - ')) {
-    const companyPart = serviceName.split(' - ')[0].trim();
-    for (const key of Object.keys(serviceLogoMap)) {
-      if (key.startsWith(companyPart)) {
-        logoSrc = serviceLogoMap[key];
-        break;
-      }
-    }
-  }
-  
-  if (logoSrc) {
-    return (
-      <div className={`bg-white rounded-lg overflow-hidden flex items-center justify-center ${className}`}>
-        <img src={logoSrc} alt={`${serviceName} logo`} className="w-full h-full object-contain p-1" />
-      </div>
-    );
-  }
-  
-  // ロゴが見つからない場合はフォールバック
-  const firstLetter = serviceName.charAt(0).toUpperCase();
-  const colorIndex = serviceName.charCodeAt(0) % defaultColors.length;
-  const bgColorClass = defaultColors[colorIndex];
+  const initials = getServiceInitials(serviceName);
+  const bgColor = getBrandColor(serviceName);
   
   return (
-    <div className={`${bgColorClass} rounded-lg flex items-center justify-center font-bold ${className}`}>
-      {firstLetter}
+    <div 
+      className={`rounded-lg flex items-center justify-center font-bold ${className}`}
+      style={{ backgroundColor: bgColor, color: 'white' }}
+    >
+      {initials}
     </div>
   );
 }
