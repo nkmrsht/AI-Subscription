@@ -1,13 +1,5 @@
 import React from 'react';
 import { 
-  SiOpenai, 
-  SiGoogle, 
-  SiGithub, 
-  SiNotion, 
-  SiAdobe,
-  SiReplit
-} from 'react-icons/si';
-import { 
   Bot, 
   Image, 
   Sparkles, 
@@ -17,93 +9,130 @@ import {
   Rocket,
   FileCode,
   Palette,
-  BrainCircuit
+  BrainCircuit,
+  Star,
+  Cpu,
+  MessageSquare,
+  Gift,
+  Server,
+  Cloud,
+  BookOpen,
+  Binary,
+  Infinity,
+  Search,
+  PenTool,
+  Lightbulb
 } from 'lucide-react';
 
 // 各サービスの最新ロゴを使用
 const serviceIconMap: Record<string, React.ReactNode> = {
-  // サービス名によるマッピング
   // OpenAI
-  'ChatGPT Plus': <SiOpenai className="w-full h-full p-1 text-[#00A67E]" />,
-  'ChatGPT Pro': <SiOpenai className="w-full h-full p-1 text-[#00A67E]" />,
-  'ChatGPT Team': <SiOpenai className="w-full h-full p-1 text-[#00A67E]" />,
-  'ChatGPT Enterprise': <SiOpenai className="w-full h-full p-1 text-[#00A67E]" />,
-  'ChatGPT Free': <SiOpenai className="w-full h-full p-1 text-[#00A67E]" />,
-  'OpenAI API Pro': <SiOpenai className="w-full h-full p-1 text-[#00A67E]" />,
-  'OpenAI API Team': <SiOpenai className="w-full h-full p-1 text-[#00A67E]" />,
+  'ChatGPT': <MessageSquare className="w-full h-full p-1 text-[#00A67E]" />,
+  'ChatGPT Plus': <MessageSquare className="w-full h-full p-1 text-[#00A67E]" />,
+  'ChatGPT Pro': <MessageSquare className="w-full h-full p-1 text-[#00A67E]" />,
+  'ChatGPT Team': <MessageSquare className="w-full h-full p-1 text-[#00A67E]" />,
+  'ChatGPT Enterprise': <MessageSquare className="w-full h-full p-1 text-[#00A67E]" />,
+  'ChatGPT Free': <MessageSquare className="w-full h-full p-1 text-[#00A67E]" />,
+  'OpenAI': <MessageSquare className="w-full h-full p-1 text-[#00A67E]" />,
+  'OpenAI API': <MessageSquare className="w-full h-full p-1 text-[#00A67E]" />,
+  'OpenAI API Pro': <MessageSquare className="w-full h-full p-1 text-[#00A67E]" />,
+  'OpenAI API Team': <MessageSquare className="w-full h-full p-1 text-[#00A67E]" />,
   
-  // Google
-  'Gemini Advanced': <SiGoogle className="w-full h-full p-1 text-[#4285F4]" />,
-  'Gemini Business': <SiGoogle className="w-full h-full p-1 text-[#4285F4]" />,
-  'Gemini Enterprise': <SiGoogle className="w-full h-full p-1 text-[#4285F4]" />,
-  'Gemini Free': <SiGoogle className="w-full h-full p-1 text-[#4285F4]" />,
+  // Google Gemini
+  'Gemini': <Gift className="w-full h-full p-1 text-[#4285F4]" />,
+  'Gemini Advanced': <Gift className="w-full h-full p-1 text-[#4285F4]" />,
+  'Gemini Business': <Gift className="w-full h-full p-1 text-[#4285F4]" />,
+  'Gemini Enterprise': <Gift className="w-full h-full p-1 text-[#4285F4]" />,
+  'Gemini Free': <Gift className="w-full h-full p-1 text-[#4285F4]" />,
+  'Google': <Gift className="w-full h-full p-1 text-[#4285F4]" />,
   
-  // Anthropic
-  'Claude Free': <Sparkles className="w-full h-full p-1 text-[#8A3FFC]" />,
-  'Claude Pro': <Sparkles className="w-full h-full p-1 text-[#8A3FFC]" />,
-  'Claude Team': <Sparkles className="w-full h-full p-1 text-[#8A3FFC]" />,
-  'Claude Business': <Sparkles className="w-full h-full p-1 text-[#8A3FFC]" />,
-  'Claude Enterprise': <Sparkles className="w-full h-full p-1 text-[#8A3FFC]" />,
+  // Anthropic Claude
+  'Claude': <Bot className="w-full h-full p-1 text-[#8A3FFC]" />,
+  'Claude Free': <Bot className="w-full h-full p-1 text-[#8A3FFC]" />,
+  'Claude Pro': <Bot className="w-full h-full p-1 text-[#8A3FFC]" />,
+  'Claude Team': <Bot className="w-full h-full p-1 text-[#8A3FFC]" />,
+  'Claude Business': <Bot className="w-full h-full p-1 text-[#8A3FFC]" />,
+  'Claude Enterprise': <Bot className="w-full h-full p-1 text-[#8A3FFC]" />,
+  'Anthropic': <Bot className="w-full h-full p-1 text-[#8A3FFC]" />,
   
   // Notion
-  'Notion AI Personal': <SiNotion className="w-full h-full p-1 text-black" />,
-  'Notion AI Plus': <SiNotion className="w-full h-full p-1 text-black" />,
-  'Notion AI Business': <SiNotion className="w-full h-full p-1 text-black" />,
+  'Notion': <BookOpen className="w-full h-full p-1 text-black" />,
+  'Notion AI': <BookOpen className="w-full h-full p-1 text-black" />,
+  'Notion AI Personal': <BookOpen className="w-full h-full p-1 text-black" />,
+  'Notion AI Plus': <BookOpen className="w-full h-full p-1 text-black" />,
+  'Notion AI Business': <BookOpen className="w-full h-full p-1 text-black" />,
   
-  // GitHub
-  'GitHub Copilot Individual': <SiGithub className="w-full h-full p-1 text-[#24292e]" />,
-  'GitHub Copilot Business': <SiGithub className="w-full h-full p-1 text-[#24292e]" />,
-  'GitHub Copilot Enterprise': <SiGithub className="w-full h-full p-1 text-[#24292e]" />,
+  // GitHub Copilot
+  'GitHub': <Code className="w-full h-full p-1 text-[#24292e]" />,
+  'GitHub Copilot': <Code className="w-full h-full p-1 text-[#24292e]" />,
+  'GitHub Copilot Individual': <Code className="w-full h-full p-1 text-[#24292e]" />,
+  'GitHub Copilot Business': <Code className="w-full h-full p-1 text-[#24292e]" />,
+  'GitHub Copilot Enterprise': <Code className="w-full h-full p-1 text-[#24292e]" />,
   
   // Adobe
-  'Adobe Firefly Single App': <SiAdobe className="w-full h-full p-1 text-[#FF0000]" />,
-  'Adobe Firefly (Creative Cloud)': <SiAdobe className="w-full h-full p-1 text-[#FF0000]" />,
-  'Adobe Express Premium': <SiAdobe className="w-full h-full p-1 text-[#FF0000]" />,
+  'Adobe': <PenTool className="w-full h-full p-1 text-[#FF0000]" />,
+  'Adobe Firefly': <PenTool className="w-full h-full p-1 text-[#FF0000]" />,
+  'Adobe Firefly Single App': <PenTool className="w-full h-full p-1 text-[#FF0000]" />,
+  'Adobe Firefly (Creative Cloud)': <PenTool className="w-full h-full p-1 text-[#FF0000]" />,
+  'Adobe Express Premium': <PenTool className="w-full h-full p-1 text-[#FF0000]" />,
   
   // Midjourney
-  'Midjourney Basic': <Image className="w-full h-full p-1 text-[#7289DA]" />,
-  'Midjourney Standard': <Image className="w-full h-full p-1 text-[#7289DA]" />,
-  'Midjourney Pro': <Image className="w-full h-full p-1 text-[#7289DA]" />,
-  'Midjourney Mega': <Image className="w-full h-full p-1 text-[#7289DA]" />,
+  'Midjourney': <Image className="w-full h-full p-1 text-[#000000]" />,
+  'Midjourney Basic': <Image className="w-full h-full p-1 text-[#000000]" />,
+  'Midjourney Standard': <Image className="w-full h-full p-1 text-[#000000]" />,
+  'Midjourney Pro': <Image className="w-full h-full p-1 text-[#000000]" />,
+  'Midjourney Mega': <Image className="w-full h-full p-1 text-[#000000]" />,
   
   // Perplexity
-  'Perplexity Pro': <Bot className="w-full h-full p-1 text-[#2563EB]" />,
-  'Perplexity Pro+': <Bot className="w-full h-full p-1 text-[#2563EB]" />,
-  'Perplexity Business': <Bot className="w-full h-full p-1 text-[#2563EB]" />,
+  'Perplexity': <Search className="w-full h-full p-1 text-[#2563EB]" />,
+  'Perplexity Pro': <Search className="w-full h-full p-1 text-[#2563EB]" />,
+  'Perplexity Pro+': <Search className="w-full h-full p-1 text-[#2563EB]" />,
+  'Perplexity Business': <Search className="w-full h-full p-1 text-[#2563EB]" />,
   
   // Replit
-  'Replit Core': <SiReplit className="w-full h-full p-1 text-[#F26207]" />,
-  'Replit Pro': <SiReplit className="w-full h-full p-1 text-[#F26207]" />,
-  'Replit Free': <SiReplit className="w-full h-full p-1 text-[#F26207]" />,
-  'Replit Teams for Education': <SiReplit className="w-full h-full p-1 text-[#F26207]" />,
-  'Replit Teams Pro': <SiReplit className="w-full h-full p-1 text-[#F26207]" />,
+  'Replit': <FileCode className="w-full h-full p-1 text-[#F26207]" />,
+  'Replit Core': <FileCode className="w-full h-full p-1 text-[#F26207]" />,
+  'Replit Pro': <FileCode className="w-full h-full p-1 text-[#F26207]" />,
+  'Replit Free': <FileCode className="w-full h-full p-1 text-[#F26207]" />,
+  'Replit Teams for Education': <FileCode className="w-full h-full p-1 text-[#F26207]" />,
+  'Replit Teams Pro': <FileCode className="w-full h-full p-1 text-[#F26207]" />,
   
-  // Microsoft
-  'Microsoft Copilot Free': <Code className="w-full h-full p-1 text-[#00A4EF]" />,
-  'Microsoft Copilot Pro': <Code className="w-full h-full p-1 text-[#00A4EF]" />,
-  'Microsoft Copilot for Business': <Code className="w-full h-full p-1 text-[#00A4EF]" />,
-  'Microsoft Copilot for M365': <Code className="w-full h-full p-1 text-[#00A4EF]" />,
+  // Microsoft Copilot
+  'Microsoft': <Server className="w-full h-full p-1 text-[#00A4EF]" />,
+  'Microsoft Copilot': <Server className="w-full h-full p-1 text-[#00A4EF]" />,
+  'Microsoft Copilot Free': <Server className="w-full h-full p-1 text-[#00A4EF]" />,
+  'Microsoft Copilot Pro': <Server className="w-full h-full p-1 text-[#00A4EF]" />,
+  'Microsoft Copilot for Business': <Server className="w-full h-full p-1 text-[#00A4EF]" />,
+  'Microsoft Copilot for M365': <Server className="w-full h-full p-1 text-[#00A4EF]" />,
   
   // Stability AI
-  'Stability Core Membership': <Zap className="w-full h-full p-1 text-[#2D333B]" />,
-  'Stability Pro Membership': <Zap className="w-full h-full p-1 text-[#2D333B]" />,
-  'Stability API Standard': <Zap className="w-full h-full p-1 text-[#2D333B]" />,
+  'Stability AI': <Star className="w-full h-full p-1 text-[#2D333B]" />,
+  'Stability Core Membership': <Star className="w-full h-full p-1 text-[#2D333B]" />,
+  'Stability Pro Membership': <Star className="w-full h-full p-1 text-[#2D333B]" />,
+  'Stability API Standard': <Star className="w-full h-full p-1 text-[#2D333B]" />,
   
   // RunwayML
+  'Runway': <Rocket className="w-full h-full p-1 text-[#9146FF]" />,
+  'RunwayML': <Rocket className="w-full h-full p-1 text-[#9146FF]" />,
   'Runway Standard': <Rocket className="w-full h-full p-1 text-[#9146FF]" />,
   'Runway Pro': <Rocket className="w-full h-full p-1 text-[#9146FF]" />,
   'Runway Unlimited': <Rocket className="w-full h-full p-1 text-[#9146FF]" />,
   
   // Leonardo.ai
+  'Leonardo': <Palette className="w-full h-full p-1 text-[#6F4FF0]" />,
+  'Leonardo AI': <Palette className="w-full h-full p-1 text-[#6F4FF0]" />,
   'Leonardo Premium': <Palette className="w-full h-full p-1 text-[#6F4FF0]" />,
   'Leonardo Pro': <Palette className="w-full h-full p-1 text-[#6F4FF0]" />,
   'Leonardo Enterprise': <Palette className="w-full h-full p-1 text-[#6F4FF0]" />,
   
   // Genspark
-  'Genspark Basic': <BrainCircuit className="w-full h-full p-1 text-[#FF6B00]" />,
-  'Genspark Pro': <BrainCircuit className="w-full h-full p-1 text-[#FF6B00]" />,
-  'Genspark Business': <BrainCircuit className="w-full h-full p-1 text-[#FF6B00]" />,
-  'Genspark Enterprise': <BrainCircuit className="w-full h-full p-1 text-[#FF6B00]" />
+  'Genspark': <Lightbulb className="w-full h-full p-1 text-[#FF6B00]" />,
+  'Genspark AI': <Lightbulb className="w-full h-full p-1 text-[#FF6B00]" />,
+  'Genspark Basic': <Lightbulb className="w-full h-full p-1 text-[#FF6B00]" />,
+  'Genspark Plus': <Lightbulb className="w-full h-full p-1 text-[#FF6B00]" />,
+  'Genspark Pro': <Lightbulb className="w-full h-full p-1 text-[#FF6B00]" />,
+  'Genspark Business': <Lightbulb className="w-full h-full p-1 text-[#FF6B00]" />,
+  'Genspark Enterprise': <Lightbulb className="w-full h-full p-1 text-[#FF6B00]" />
 };
 
 // A default color palette for services without specific colors
