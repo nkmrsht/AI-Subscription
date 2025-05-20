@@ -219,7 +219,7 @@ export const AI_SERVICES_DEFINITIONS: Record<string, AIServiceDefinition> = {
             currency: "USD"
           },
           yearly: {
-            price: 250,
+            price: 240,  // 年額$240 (月額$20相当)
             currency: "USD"
           }
         },
