@@ -1,15 +1,11 @@
 import React from 'react';
 
-// SVGロゴのインポート
-import openaiLogo from '../assets/logos/openai-logo.svg';
-import notionLogo from '../assets/logos/notion-logo.svg';
-import geminiLogo from '../assets/logos/gemini-logo.svg';
-import claudeLogo from '../assets/logos/claude-logo.svg';
-import githubLogo from '../assets/logos/github-logo.svg';
-import microsoftLogo from '../assets/logos/microsoft-logo.svg';
-import replitLogo from '../assets/logos/replit-logo.svg';
-import midjourneyLogo from '../assets/logos/midjourney-logo.svg';
-import perplexityLogo from '../assets/logos/perplexity-logo.svg';
+// PNGロゴのインポート
+import openaiLogo from '../assets/logos/openai-logo.png';
+import notionLogo from '../assets/logos/notion-logo.png';
+import geminiLogo from '../assets/logos/gemini-logo.png';
+import claudeLogo from '../assets/logos/claude-logo.png';
+import replitLogo from '../assets/logos/replit-logo.png';
 
 // サービス名と対応するロゴのマッピング
 const serviceLogoMap: Record<string, string> = {
@@ -49,41 +45,13 @@ const serviceLogoMap: Record<string, string> = {
   'Notion AI Plus': notionLogo,
   'Notion AI Business': notionLogo,
   
-  // GitHub Copilot
-  'GitHub': githubLogo,
-  'GitHub Copilot': githubLogo,
-  'GitHub Copilot Individual': githubLogo,
-  'GitHub Copilot Business': githubLogo,
-  'GitHub Copilot Enterprise': githubLogo,
-  
-  // Microsoft
-  'Microsoft': microsoftLogo,
-  'Microsoft Copilot': microsoftLogo,
-  'Microsoft Copilot Free': microsoftLogo,
-  'Microsoft Copilot Pro': microsoftLogo,
-  'Microsoft Copilot for Business': microsoftLogo,
-  'Microsoft Copilot for M365': microsoftLogo,
-  
   // Replit
   'Replit': replitLogo,
   'Replit Core': replitLogo,
   'Replit Pro': replitLogo,
   'Replit Free': replitLogo,
   'Replit Teams for Education': replitLogo,
-  'Replit Teams Pro': replitLogo,
-  
-  // Midjourney
-  'Midjourney': midjourneyLogo,
-  'Midjourney Basic': midjourneyLogo,
-  'Midjourney Standard': midjourneyLogo,
-  'Midjourney Pro': midjourneyLogo,
-  'Midjourney Mega': midjourneyLogo,
-  
-  // Perplexity
-  'Perplexity': perplexityLogo,
-  'Perplexity Pro': perplexityLogo,
-  'Perplexity Pro+': perplexityLogo,
-  'Perplexity Business': perplexityLogo
+  'Replit Teams Pro': replitLogo
 };
 
 // デフォルトの色パレット

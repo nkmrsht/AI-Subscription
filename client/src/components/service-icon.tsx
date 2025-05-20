@@ -11,7 +11,9 @@ import {
   FaServer,
   FaFileCode,
   FaPalette,
-  FaGift
+  FaGift,
+  FaSitemap,
+  FaCloudDownloadAlt
 } from 'react-icons/fa';
 
 // 各サービスの最新ロゴを使用
