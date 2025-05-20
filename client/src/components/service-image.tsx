@@ -2,24 +2,48 @@ import React from 'react';
 
 // サービス名とロゴ画像のパスのマッピング
 const serviceLogoMap: Record<string, string> = {
-  // OpenAI / ChatGPT
+  // OpenAI / ChatGPT - OpenAI関連のすべてのサービス
   'ChatGPT': '/assets/logos/openai-logo.png',
+  'ChatGPT Plus': '/assets/logos/openai-logo.png', 
+  'ChatGPT Pro': '/assets/logos/openai-logo.png',
+  'ChatGPT Team': '/assets/logos/openai-logo.png',
+  'ChatGPT Enterprise': '/assets/logos/openai-logo.png',
+  'ChatGPT Free': '/assets/logos/openai-logo.png',
   'OpenAI': '/assets/logos/openai-logo.png',
+  'OpenAI API': '/assets/logos/openai-logo.png',
   
-  // Google Gemini
+  // Google / Gemini - Google関連のすべてのサービス
   'Gemini': '/assets/logos/gemini-logo.png',
+  'Gemini Advanced': '/assets/logos/gemini-logo.png',
+  'Gemini Business': '/assets/logos/gemini-logo.png',
+  'Gemini Enterprise': '/assets/logos/gemini-logo.png',
+  'Gemini Free': '/assets/logos/gemini-logo.png',
   'Google': '/assets/logos/gemini-logo.png',
   
-  // Anthropic Claude
+  // Anthropic / Claude - Claude関連のすべてのサービス
   'Claude': '/assets/logos/claude-logo.png',
+  'Claude Free': '/assets/logos/claude-logo.png',
+  'Claude Pro': '/assets/logos/claude-logo.png',
+  'Claude Team': '/assets/logos/claude-logo.png',
+  'Claude Business': '/assets/logos/claude-logo.png',
+  'Claude Enterprise': '/assets/logos/claude-logo.png',
   'Anthropic': '/assets/logos/claude-logo.png',
   
-  // Notion
+  // Notion - Notion関連のすべてのサービス
   'Notion': '/assets/logos/notion-logo.png',
   'Notion AI': '/assets/logos/notion-logo.png',
+  'Notion AI Personal': '/assets/logos/notion-logo.png',
+  'Notion Personal Pro': '/assets/logos/notion-logo.png',
+  'Notion Team': '/assets/logos/notion-logo.png',
+  'Notion Business': '/assets/logos/notion-logo.png',
   
-  // Replit
+  // Replit - Replit関連のすべてのサービス
   'Replit': '/assets/logos/replit-logo.png',
+  'Replit Core': '/assets/logos/replit-logo.png',
+  'Replit Pro': '/assets/logos/replit-logo.png',
+  'Replit Free': '/assets/logos/replit-logo.png',
+  'Replit Teams for Education': '/assets/logos/replit-logo.png',
+  'Replit Teams Pro': '/assets/logos/replit-logo.png',
 };
 
 // サービス名からブランドカラーを取得
