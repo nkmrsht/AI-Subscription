@@ -71,64 +71,71 @@ export const AI_SERVICES_DEFINITIONS: Record<string, AIServiceDefinition> = {
     company: "Genspark AI",
     plans: [
       {
-        id: "genspark_basic",
-        name: "Genspark Basic",
+        id: "genspark_free",
+        name: "Genspark Free",
         pricing: {
           monthly: {
-            price: 10,
-            currency: "USD"
-          },
-          yearly: {
-            price: 96,  // 年額$96 (月額$8相当、20%割引)
+            price: 0,
             currency: "USD"
           }
         },
-        features: ["基本AI機能", "テキスト生成", "文章作成支援"]
+        features: ["基本AI機能", "月間1000メッセージ", "基本テキスト生成"]
+      },
+      {
+        id: "genspark_starter",
+        name: "Genspark Starter",
+        pricing: {
+          monthly: {
+            price: 15,
+            currency: "USD"
+          },
+          yearly: {
+            price: 144,  // 年額$144 (月額$12相当、20%割引)
+            currency: "USD"
+          }
+        },
+        features: ["月間5000メッセージ", "高速レスポンス", "優先サポート"]
       },
       {
         id: "genspark_pro",
         name: "Genspark Pro",
         pricing: {
           monthly: {
-            price: 25,
+            price: 30,
             currency: "USD"
           },
           yearly: {
-            price: 240,  // 年額$240 (月額$20相当、20%割引)
+            price: 288,  // 年額$288 (月額$24相当、20%割引)
             currency: "USD"
           }
         },
-        features: ["高度なAI機能", "画像生成", "API アクセス"]
+        features: ["無制限メッセージ", "画像生成", "API アクセス"]
       },
       {
         id: "genspark_business",
         name: "Genspark Business",
         pricing: {
           monthly: {
-            price: 50,
+            price: 60,
             currency: "USD"
           },
           yearly: {
-            price: 480,  // 年額$480 (月額$40相当、20%割引)
+            price: 576,  // 年額$576 (月額$48相当、20%割引)
             currency: "USD"
           }
         },
-        features: ["ビジネス向け機能", "チーム管理", "分析ツール"]
+        features: ["ビジネス向け機能", "チーム管理", "高度な分析", "専用サポート"]
       },
       {
         id: "genspark_enterprise",
         name: "Genspark Enterprise",
         pricing: {
           monthly: {
-            price: 100,
-            currency: "USD"
-          },
-          yearly: {
-            price: 960,  // 年額$960 (月額$80相当、20%割引)
+            price: 0,  // カスタム料金
             currency: "USD"
           }
         },
-        features: ["エンタープライズセキュリティ", "カスタマイズ可能なモデル", "専用サポート"]
+        features: ["エンタープライズセキュリティ", "カスタムモデル", "専任サポート", "SLAオプション"]
       }
     ]
   },
