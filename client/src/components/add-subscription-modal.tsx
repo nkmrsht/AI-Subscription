@@ -115,21 +115,17 @@ export function AddSubscriptionModal({
           setName(`${service.name} - ${plan.name}`);
           setPlanName(plan.name);
           
-          // 請求サイクルに応じた価格を設定
-          const pricing = plan.pricing[billingCycle];
-          if (pricing) {
-            setPrice(pricing.price);
-            setCurrency(pricing.currency);
-          } else if (plan.pricing.monthly) {
-            // フォールバック: 月額料金があれば使用
-            setBillingCycle("monthly");
-            setPrice(plan.pricing.monthly.price);
+          // 手動入力の推奨価格として設定
+          // 請求サイクルの初期値を選択するだけ
+          if (plan.pricing.monthly) {
             setCurrency(plan.pricing.monthly.currency);
           }
+          // 価格は最初は空にして手動入力を促す
+          setPrice(0);
         }
       }
     }
-  }, [selectedServiceId, selectedPlanId, billingCycle]);
+  }, [selectedServiceId, selectedPlanId]);
 
   // 請求サイクルが変更された時に価格を更新
   useEffect(() => {
@@ -283,20 +279,6 @@ export function AddSubscriptionModal({
                     >
                       <div className="flex justify-between items-center mb-1">
                         <div className="font-medium">{plan.name}</div>
-                        {plan.pricing.monthly && (
-                          <div className="flex flex-col items-end">
-                            <div className="text-sm text-neutral-600">
-                              {formatCurrency(plan.pricing.monthly.price, plan.pricing.monthly.currency)}/{' '}
-                              <span className="text-xs">月</span>
-                            </div>
-                            {plan.pricing.yearly && (
-                              <div className="text-xs text-green-600">
-                                年払い: {formatCurrency(plan.pricing.yearly.price / 12, plan.pricing.yearly.currency)}/{' '}
-                                <span className="text-xs">月</span>
-                              </div>
-                            )}
-                          </div>
-                        )}
                       </div>
                       {plan.features && plan.features.length > 0 && (
                         <div className="flex flex-wrap gap-1 mt-2">
@@ -319,7 +301,7 @@ export function AddSubscriptionModal({
             
             {/* 支払いサイクル選択 (プランが選択されている場合のみ表示) */}
             {selectedPlan && (
-              <div className="mb-6">
+              <div className="mb-4">
                 <Label className="block text-sm font-medium text-neutral-700 mb-2">
                   支払いサイクル
                 </Label>
@@ -330,84 +312,88 @@ export function AddSubscriptionModal({
                   className="w-full"
                 >
                   <TabsList className="grid grid-cols-3 w-full">
-                    <TabsTrigger 
-                      value="monthly" 
-                      disabled={!hasPricingOption(selectedPlan, "monthly")}
-                    >
+                    <TabsTrigger value="monthly">
                       月払い
                     </TabsTrigger>
-                    <TabsTrigger 
-                      value="yearly" 
-                      disabled={!hasPricingOption(selectedPlan, "yearly")}
-                    >
+                    <TabsTrigger value="yearly">
                       年払い
                     </TabsTrigger>
-                    <TabsTrigger 
-                      value="quarterly" 
-                      disabled={!hasPricingOption(selectedPlan, "quarterly")}
-                    >
+                    <TabsTrigger value="quarterly">
                       四半期
                     </TabsTrigger>
                   </TabsList>
                 </Tabs>
-                
-                {/* 選択した支払いサイクルの詳細 */}
-                {selectedPlan.pricing[billingCycle] && (
-                  <div className="mt-3 p-3 bg-neutral-50 rounded-lg border border-neutral-200">
-                    <div className="flex justify-between items-center">
-                      <div className="text-sm text-neutral-600">料金</div>
-                      <div className="font-medium">
-                        {formatCurrency(
-                          selectedPlan.pricing[billingCycle]!.price, 
-                          selectedPlan.pricing[billingCycle]!.currency
-                        )}
-                        {' / '}
-                        {billingCycle === "monthly" ? "月" : billingCycle === "yearly" ? "年" : "四半期"}
+              </div>
+            )}
+            
+            {/* 支払日の選択（プランが選択されている場合のみ表示） */}
+            {selectedPlan && (
+              <div className="mb-4">
+                <Label className="block text-sm font-medium text-neutral-700 mb-2">
+                  支払日
+                </Label>
+                <div className="grid grid-cols-3 gap-4">
+                  <div className="col-span-1">
+                    <Input
+                      type="number"
+                      min="1"
+                      max={billingCycle === "monthly" ? "31" : "12"}
+                      placeholder={billingCycle === "monthly" ? "例: 1-31" : "例: 1-12"}
+                      className="w-full"
+                    />
+                  </div>
+                  <div className="col-span-2 flex items-center text-sm text-neutral-500">
+                    {billingCycle === "monthly" ? "日（毎月）" : 
+                     billingCycle === "yearly" ? "月（毎年）" : 
+                     "日（3ヶ月ごと）"}
+                  </div>
+                </div>
+              </div>
+            )}
+            
+            {/* 料金設定（プランが選択されている場合のみ表示） */}
+            {selectedPlan && (
+              <div className="mb-4">
+                <Label className="block text-sm font-medium text-neutral-700 mb-2">
+                  料金（手動入力）
+                </Label>
+                <div className="grid grid-cols-3 gap-4">
+                  <div className="col-span-1">
+                    <Select
+                      value={currency}
+                      onValueChange={(value) => setCurrency(value as Currency)}
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder="通貨" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {Object.entries(CURRENCY_SYMBOLS).map(([currencyCode, symbol]) => (
+                          <SelectItem key={currencyCode} value={currencyCode}>
+                            {currencyCode} ({symbol})
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div className="col-span-2">
+                    <div className="relative">
+                      <Input
+                        type="number"
+                        value={price === 0 ? "" : price.toString()}
+                        onChange={(e) => setPrice(parseFloat(e.target.value) || 0)}
+                        placeholder="料金を入力"
+                        className="w-full pr-16"
+                        step="0.01"
+                      />
+                      <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                        <span className="text-neutral-500">
+                          {billingCycle === "monthly" ? "/ 月" : 
+                           billingCycle === "yearly" ? "/ 年" : "/ 四半期"}
+                        </span>
                       </div>
                     </div>
-                    
-                    {/* 月額/年額換算を表示 */}
-                    {billingCycle === "yearly" && selectedPlan.pricing.yearly && (
-                      <div className="flex justify-between items-center mt-1">
-                        <div className="text-xs text-neutral-500">月額換算</div>
-                        <div className="text-sm text-green-600">
-                          {formatCurrency(
-                            selectedPlan.pricing.yearly.price / 12, 
-                            selectedPlan.pricing.yearly.currency
-                          )} / 月
-                        </div>
-                      </div>
-                    )}
-                    
-                    {/* 月払いの場合は年額換算を表示 */}
-                    {billingCycle === "monthly" && selectedPlan.pricing.monthly && (
-                      <div className="flex justify-between items-center mt-1">
-                        <div className="text-xs text-neutral-500">年額換算</div>
-                        <div className="text-sm text-neutral-600">
-                          {formatCurrency(
-                            selectedPlan.pricing.monthly.price * 12, 
-                            selectedPlan.pricing.monthly.currency
-                          )} / 年
-                        </div>
-                      </div>
-                    )}
-                    
-                    {/* 月払いの場合で年払いオプションがある場合、割引率も表示 */}
-                    {billingCycle === "monthly" && selectedPlan.pricing.yearly && selectedPlan.pricing.monthly && (
-                      <div className="flex justify-between items-center mt-1">
-                        <div className="text-xs text-neutral-500">年払い割引</div>
-                        <div className="text-sm text-green-600">
-                          {(() => {
-                            const monthlyTotal = selectedPlan.pricing.monthly.price * 12;
-                            const yearlyPrice = selectedPlan.pricing.yearly.price;
-                            const discountPercent = Math.round((1 - yearlyPrice / monthlyTotal) * 100);
-                            return `${discountPercent}% OFF`;
-                          })()}
-                        </div>
-                      </div>
-                    )}
                   </div>
-                )}
+                </div>
               </div>
             )}
           </>
