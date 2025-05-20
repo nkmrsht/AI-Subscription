@@ -64,7 +64,7 @@ export const AI_SERVICES_DEFINITIONS: Record<string, AIServiceDefinition> = {
     ]
   },
   
-  // Genspark (2025年5月追加)
+  // Genspark (2025年5月20日スクリーンショットから更新)
   genspark: {
     id: "genspark",
     name: "Genspark",
@@ -79,63 +79,37 @@ export const AI_SERVICES_DEFINITIONS: Record<string, AIServiceDefinition> = {
             currency: "USD"
           }
         },
-        features: ["基本AI機能", "月間1000メッセージ", "基本テキスト生成"]
+        features: ["基本AI機能", "限定クレジット", "基本テキスト生成"]
       },
       {
-        id: "genspark_starter",
-        name: "Genspark Starter",
+        id: "genspark_plus",
+        name: "Genspark Plus",
         pricing: {
           monthly: {
-            price: 15,
+            price: 24.99,
             currency: "USD"
           },
           yearly: {
-            price: 144,  // 年額$144 (月額$12相当、20%割引)
+            price: 239.99,  // 年額$239.99 (月額$19.99相当、約20%割引)
             currency: "USD"
           }
         },
-        features: ["月間5000メッセージ", "高速レスポンス", "優先サポート"]
+        features: ["10,000クレジット/月", "AIドライブに50GBストレージ", "すべてのAIエージェントへの優先アクセス"]
       },
       {
         id: "genspark_pro",
         name: "Genspark Pro",
         pricing: {
           monthly: {
-            price: 30,
+            price: 249.99,
             currency: "USD"
           },
           yearly: {
-            price: 288,  // 年額$288 (月額$24相当、20%割引)
+            price: 2399.99,  // 年額$2399.99 (月額$199.99相当、約20%割引)
             currency: "USD"
           }
         },
-        features: ["無制限メッセージ", "画像生成", "API アクセス"]
-      },
-      {
-        id: "genspark_business",
-        name: "Genspark Business",
-        pricing: {
-          monthly: {
-            price: 60,
-            currency: "USD"
-          },
-          yearly: {
-            price: 576,  // 年額$576 (月額$48相当、20%割引)
-            currency: "USD"
-          }
-        },
-        features: ["ビジネス向け機能", "チーム管理", "高度な分析", "専用サポート"]
-      },
-      {
-        id: "genspark_enterprise",
-        name: "Genspark Enterprise",
-        pricing: {
-          monthly: {
-            price: 0,  // カスタム料金
-            currency: "USD"
-          }
-        },
-        features: ["エンタープライズセキュリティ", "カスタムモデル", "専任サポート", "SLAオプション"]
+        features: ["125,000クレジット/月", "AIドライブに1TBストレージ", "すべてのAIエージェントへの優先アクセス"]
       }
     ]
   },
