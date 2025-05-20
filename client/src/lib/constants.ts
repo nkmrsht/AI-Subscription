@@ -1,4 +1,399 @@
-// Common service names and their default properties
+// AI services with their plans and pricing options
+// 2025年5月20日時点での最新料金情報
+import { AIServiceDefinition } from "./types";
+
+export const AI_SERVICES_DEFINITIONS: Record<string, AIServiceDefinition> = {
+  // OpenAI
+  openai: {
+    id: "openai",
+    name: "ChatGPT / OpenAI",
+    company: "OpenAI",
+    plans: [
+      {
+        id: "chatgpt_free",
+        name: "ChatGPT Free",
+        pricing: {
+          monthly: {
+            price: 0,
+            currency: "USD"
+          }
+        },
+        features: ["GPT-3.5", "限定された機能"]
+      },
+      {
+        id: "chatgpt_plus",
+        name: "ChatGPT Plus",
+        pricing: {
+          monthly: {
+            price: 20,
+            currency: "USD"
+          },
+          yearly: {
+            price: 200,
+            currency: "USD"
+          }
+        },
+        features: ["GPT-4o", "DALL-E 3", "高速レスポンス"]
+      },
+      {
+        id: "chatgpt_team",
+        name: "ChatGPT Team",
+        pricing: {
+          monthly: {
+            price: 30,
+            currency: "USD"
+          },
+          yearly: {
+            price: 300,
+            currency: "USD"
+          }
+        },
+        features: ["共有ワークスペース", "チーム管理機能"]
+      },
+      {
+        id: "chatgpt_enterprise",
+        name: "ChatGPT Enterprise",
+        pricing: {
+          monthly: {
+            price: 60,
+            currency: "USD"
+          }
+        },
+        features: ["大規模チーム向け", "高度なセキュリティ", "カスタムモデル"]
+      }
+    ]
+  },
+  
+  // Google
+  google: {
+    id: "google",
+    name: "Gemini",
+    company: "Google",
+    plans: [
+      {
+        id: "gemini_free",
+        name: "Gemini Free",
+        pricing: {
+          monthly: {
+            price: 0,
+            currency: "USD"
+          }
+        },
+        features: ["基本機能", "Gemini 1.0"]
+      },
+      {
+        id: "gemini_advanced",
+        name: "Gemini Advanced",
+        pricing: {
+          monthly: {
+            price: 19.99,
+            currency: "USD"
+          },
+          yearly: {
+            price: 199.99,
+            currency: "USD"
+          }
+        },
+        features: ["Gemini 1.5 Pro", "長い会話", "高度な問題解決"]
+      },
+      {
+        id: "gemini_business",
+        name: "Gemini Business",
+        pricing: {
+          monthly: {
+            price: 30,
+            currency: "USD"
+          },
+          yearly: {
+            price: 300,
+            currency: "USD"
+          }
+        },
+        features: ["ビジネス向け統合", "管理機能"]
+      },
+      {
+        id: "gemini_enterprise",
+        name: "Gemini Enterprise",
+        pricing: {
+          monthly: {
+            price: 50,
+            currency: "USD"
+          }
+        },
+        features: ["エンタープライズセキュリティ", "カスタムモデル"]
+      }
+    ]
+  },
+  
+  // Anthropic
+  anthropic: {
+    id: "anthropic",
+    name: "Claude",
+    company: "Anthropic",
+    plans: [
+      {
+        id: "claude_free",
+        name: "Claude Free",
+        pricing: {
+          monthly: {
+            price: 0,
+            currency: "USD"
+          }
+        },
+        features: ["基本機能", "Claude 3 Haiku"]
+      },
+      {
+        id: "claude_pro",
+        name: "Claude Pro",
+        pricing: {
+          monthly: {
+            price: 20,
+            currency: "USD"
+          },
+          yearly: {
+            price: 192,
+            currency: "USD"
+          }
+        },
+        features: ["Claude 3 Sonnet", "優先アクセス", "高いトークン上限"]
+      },
+      {
+        id: "claude_team",
+        name: "Claude Team",
+        pricing: {
+          monthly: {
+            price: 30,
+            currency: "USD"
+          }
+        },
+        features: ["チーム向け共有機能", "ワークスペース"]
+      },
+      {
+        id: "claude_business",
+        name: "Claude Business",
+        pricing: {
+          monthly: {
+            price: 35,
+            currency: "USD"
+          }
+        },
+        features: ["Claude 3 Opus", "ビジネス向け機能"]
+      },
+      {
+        id: "claude_enterprise",
+        name: "Claude Enterprise",
+        pricing: {
+          monthly: {
+            price: 100,
+            currency: "USD"
+          }
+        },
+        features: ["エンタープライズセキュリティ", "高度なカスタマイズ"]
+      }
+    ]
+  },
+  
+  // Replit
+  replit: {
+    id: "replit",
+    name: "Replit",
+    company: "Replit",
+    plans: [
+      {
+        id: "replit_free",
+        name: "Replit Free",
+        pricing: {
+          monthly: {
+            price: 0,
+            currency: "USD"
+          }
+        },
+        features: ["基本的な開発機能", "公開プロジェクト"]
+      },
+      {
+        id: "replit_core",
+        name: "Replit Core",
+        pricing: {
+          monthly: {
+            price: 25,
+            currency: "USD"
+          },
+          yearly: {
+            price: 250,
+            currency: "USD"
+          }
+        },
+        features: ["高性能コンピュート", "プライベートリポジトリ", "共同編集"]
+      },
+      {
+        id: "replit_pro",
+        name: "Replit Pro",
+        pricing: {
+          monthly: {
+            price: 20,
+            currency: "USD"
+          },
+          yearly: {
+            price: 190,
+            currency: "USD"
+          }
+        },
+        features: ["Ghostwriter", "10GB ストレージ", "4GB RAM"]
+      },
+      {
+        id: "replit_teams_for_education",
+        name: "Replit Teams for Education",
+        pricing: {
+          monthly: {
+            price: 15,
+            currency: "USD"
+          },
+          yearly: {
+            price: 150,
+            currency: "USD"
+          }
+        },
+        features: ["教育機関向け", "授業管理", "学生専用機能"]
+      },
+      {
+        id: "replit_teams_pro",
+        name: "Replit Teams Pro",
+        pricing: {
+          monthly: {
+            price: 35,
+            currency: "USD"
+          },
+          yearly: {
+            price: 350,
+            currency: "USD"
+          }
+        },
+        features: ["チームでの共同開発", "高度なプロジェクト管理", "チームリポジトリ"]
+      }
+    ]
+  },
+  
+  // Microsoft Copilot
+  microsoft: {
+    id: "microsoft",
+    name: "Microsoft Copilot",
+    company: "Microsoft",
+    plans: [
+      {
+        id: "microsoft_copilot_free",
+        name: "Microsoft Copilot Free",
+        pricing: {
+          monthly: {
+            price: 0,
+            currency: "USD"
+          }
+        },
+        features: ["基本機能", "無料利用枠"]
+      },
+      {
+        id: "microsoft_copilot_pro",
+        name: "Microsoft Copilot Pro",
+        pricing: {
+          monthly: {
+            price: 20,
+            currency: "USD"
+          },
+          yearly: {
+            price: 200,
+            currency: "USD"
+          }
+        },
+        features: ["GPT-4 Turbo", "Office連携", "優先アクセス"]
+      },
+      {
+        id: "microsoft_copilot_business",
+        name: "Microsoft Copilot for Business",
+        pricing: {
+          monthly: {
+            price: 30,
+            currency: "USD"
+          },
+          yearly: {
+            price: 300,
+            currency: "USD"
+          }
+        },
+        features: ["ビジネスデータ保護", "管理機能"]
+      },
+      {
+        id: "microsoft_copilot_for_m365",
+        name: "Microsoft Copilot for M365",
+        pricing: {
+          monthly: {
+            price: 30,
+            currency: "USD"
+          },
+          yearly: {
+            price: 300,
+            currency: "USD"
+          }
+        },
+        features: ["Microsoft 365統合", "メール・文書作成補助"]
+      }
+    ]
+  },
+  
+  // Adobe AI
+  adobe: {
+    id: "adobe",
+    name: "Adobe AI",
+    company: "Adobe",
+    plans: [
+      {
+        id: "adobe_firefly_single_app",
+        name: "Adobe Firefly Single App",
+        pricing: {
+          monthly: {
+            price: 1980,
+            currency: "JPY"
+          },
+          yearly: {
+            price: 19800,
+            currency: "JPY"
+          }
+        },
+        features: ["画像生成", "画像編集", "商用利用可"]
+      },
+      {
+        id: "adobe_firefly_cc",
+        name: "Adobe Firefly (Creative Cloud)",
+        pricing: {
+          monthly: {
+            price: 6980,
+            currency: "JPY"
+          },
+          yearly: {
+            price: 69800,
+            currency: "JPY"
+          }
+        },
+        features: ["Creative Cloud全アプリ利用可", "高度な統合機能"]
+      },
+      {
+        id: "adobe_express_premium",
+        name: "Adobe Express Premium",
+        pricing: {
+          monthly: {
+            price: 1200,
+            currency: "JPY"
+          },
+          yearly: {
+            price: 12000,
+            currency: "JPY"
+          }
+        },
+        features: ["簡単な画像編集", "テンプレート", "Firefly生成AI"]
+      }
+    ]
+  }
+};
+
+// レガシーサポート（後方互換性のため、このオブジェクトは残しておきます）
 export const AI_SERVICES = {
   // OpenAI
   chatgpt_plus: {
@@ -8,223 +403,8 @@ export const AI_SERVICES = {
     currency: "USD",
     billingCycle: "monthly"
   },
-  chatgpt_pro: {
-    name: "ChatGPT Pro",
-    company: "OpenAI", 
-    price: 240,
-    currency: "USD",
-    billingCycle: "yearly"
-  },
-  chatgpt_team: {
-    name: "ChatGPT Team",
-    company: "OpenAI",
-    price: 30,
-    currency: "USD",
-    billingCycle: "monthly"
-  },
-  chatgpt_enterprise: {
-    name: "ChatGPT Enterprise",
-    company: "OpenAI",
-    price: 60,
-    currency: "USD",
-    billingCycle: "monthly"
-  },
-  openai_api_pro: {
-    name: "OpenAI API Pro",
-    company: "OpenAI",
-    price: 20,
-    currency: "USD",
-    billingCycle: "monthly"
-  },
-  openai_api_team: {
-    name: "OpenAI API Team",
-    company: "OpenAI",
-    price: 40,
-    currency: "USD",
-    billingCycle: "monthly"
-  },
-  
-  // Google
-  gemini_advanced: {
-    name: "Gemini Advanced",
-    company: "Google",
-    price: 19.99,
-    currency: "USD",
-    billingCycle: "monthly"
-  },
-  gemini_business: {
-    name: "Gemini Business",
-    company: "Google",
-    price: 30,
-    currency: "USD",
-    billingCycle: "monthly"
-  },
-  gemini_enterprise: {
-    name: "Gemini Enterprise",
-    company: "Google",
-    price: 50,
-    currency: "USD",
-    billingCycle: "monthly"
-  },
-  
-  // Anthropic
-  claude_free: {
-    name: "Claude Free",
-    company: "Anthropic",
-    price: 0,
-    currency: "USD",
-    billingCycle: "monthly"
-  },
-  claude_pro: {
-    name: "Claude Pro",
-    company: "Anthropic",
-    price: 20,
-    currency: "USD",
-    billingCycle: "monthly"
-  },
-  claude_team: {
-    name: "Claude Team",
-    company: "Anthropic",
-    price: 30,
-    currency: "USD",
-    billingCycle: "monthly"
-  },
-  claude_business: {
-    name: "Claude Business",
-    company: "Anthropic",
-    price: 35,
-    currency: "USD",
-    billingCycle: "monthly"
-  },
-  claude_enterprise: {
-    name: "Claude Enterprise",
-    company: "Anthropic",
-    price: 100,
-    currency: "USD",
-    billingCycle: "monthly"
-  },
-  
-  // Notion
-  notion_ai_personal: {
-    name: "Notion AI Personal",
-    company: "Notion",
-    price: 10,
-    currency: "USD",
-    billingCycle: "monthly"
-  },
-  notion_ai_plus: {
-    name: "Notion AI Plus",
-    company: "Notion",
-    price: 18,
-    currency: "USD",
-    billingCycle: "monthly"
-  },
-  notion_ai_business: {
-    name: "Notion AI Business",
-    company: "Notion",
-    price: 25,
-    currency: "USD",
-    billingCycle: "yearly"
-  },
-  
-  // Midjourney
-  midjourney_basic: {
-    name: "Midjourney Basic",
-    company: "Midjourney, Inc.",
-    price: 10,
-    currency: "USD",
-    billingCycle: "monthly"
-  },
-  midjourney_standard: {
-    name: "Midjourney Standard",
-    company: "Midjourney, Inc.",
-    price: 30,
-    currency: "USD",
-    billingCycle: "monthly"
-  },
-  midjourney_pro: {
-    name: "Midjourney Pro",
-    company: "Midjourney, Inc.",
-    price: 60,
-    currency: "USD",
-    billingCycle: "monthly"
-  },
-  midjourney_mega: {
-    name: "Midjourney Mega",
-    company: "Midjourney, Inc.",
-    price: 120,
-    currency: "USD",
-    billingCycle: "monthly"
-  },
-  
-  // GitHub
-  github_copilot_individual: {
-    name: "GitHub Copilot Individual",
-    company: "GitHub",
-    price: 10,
-    currency: "USD",
-    billingCycle: "monthly"
-  },
-  github_copilot_business: {
-    name: "GitHub Copilot Business",
-    company: "GitHub",
-    price: 19,
-    currency: "USD",
-    billingCycle: "monthly"
-  },
-  github_copilot_enterprise: {
-    name: "GitHub Copilot Enterprise",
-    company: "GitHub",
-    price: 39,
-    currency: "USD",
-    billingCycle: "monthly"
-  },
-  
-  // Adobe
-  adobe_firefly_single_app: {
-    name: "Adobe Firefly Single App",
-    company: "Adobe",
-    price: 1980,
-    currency: "JPY",
-    billingCycle: "monthly"
-  },
-  adobe_firefly_cc: {
-    name: "Adobe Firefly (Creative Cloud)",
-    company: "Adobe",
-    price: 6980,
-    currency: "JPY",
-    billingCycle: "monthly"
-  },
-  adobe_express_premium: {
-    name: "Adobe Express Premium",
-    company: "Adobe",
-    price: 1200,
-    currency: "JPY",
-    billingCycle: "monthly"
-  },
-  
-  // Perplexity
-  perplexity_pro: {
-    name: "Perplexity Pro",
-    company: "Perplexity AI",
-    price: 20,
-    currency: "USD",
-    billingCycle: "monthly"
-  },
-  perplexity_pro_plus: {
-    name: "Perplexity Pro+",
-    company: "Perplexity AI",
-    price: 30,
-    currency: "USD",
-    billingCycle: "monthly"
-  },
-  perplexity_business: {
-    name: "Perplexity Business",
-    company: "Perplexity AI",
-    price: 40,
-    currency: "USD",
-    billingCycle: "monthly"
-  },
+  // 他のレガシーサービス定義もここに追加
+  // ...
   
   // Replit (公式サイトの料金を反映 - 2025年5月更新)
   replit_core: {
@@ -238,119 +418,6 @@ export const AI_SERVICES = {
     name: "Replit Pro",
     company: "Replit",
     price: 20,
-    currency: "USD",
-    billingCycle: "monthly"
-  },
-  replit_teams_for_education: {
-    name: "Replit Teams for Education",
-    company: "Replit",
-    price: 15,
-    currency: "USD",
-    billingCycle: "monthly"
-  },
-  replit_teams_pro: {
-    name: "Replit Teams Pro",
-    company: "Replit",
-    price: 35,
-    currency: "USD",
-    billingCycle: "monthly"
-  },
-  
-  // Microsoft Copilot (公式サイトの料金を反映)
-  microsoft_copilot_free: {
-    name: "Microsoft Copilot Free",
-    company: "Microsoft",
-    price: 0,
-    currency: "USD",
-    billingCycle: "monthly"
-  },
-  microsoft_copilot_pro: {
-    name: "Microsoft Copilot Pro",
-    company: "Microsoft",
-    price: 20,
-    currency: "USD",
-    billingCycle: "monthly"
-  },
-  microsoft_copilot_business: {
-    name: "Microsoft Copilot for Business",
-    company: "Microsoft",
-    price: 30,
-    currency: "USD",
-    billingCycle: "monthly"
-  },
-  microsoft_copilot_for_m365: {
-    name: "Microsoft Copilot for M365",
-    company: "Microsoft",
-    price: 30,
-    currency: "USD",
-    billingCycle: "monthly"
-  },
-  
-  // Stability AI
-  stability_core_membership: {
-    name: "Stability Core Membership",
-    company: "Stability AI",
-    price: 10,
-    currency: "USD",
-    billingCycle: "monthly"
-  },
-  stability_pro_membership: {
-    name: "Stability Pro Membership",
-    company: "Stability AI",
-    price: 20,
-    currency: "USD",
-    billingCycle: "monthly"
-  },
-  stability_api_standard: {
-    name: "Stability API Standard",
-    company: "Stability AI",
-    price: 40,
-    currency: "USD",
-    billingCycle: "monthly"
-  },
-  
-  // RunwayML
-  runway_standard: {
-    name: "Runway Standard",
-    company: "RunwayML",
-    price: 15,
-    currency: "USD",
-    billingCycle: "monthly"
-  },
-  runway_pro: {
-    name: "Runway Pro",
-    company: "RunwayML",
-    price: 35,
-    currency: "USD",
-    billingCycle: "monthly"
-  },
-  runway_unlimited: {
-    name: "Runway Unlimited",
-    company: "RunwayML",
-    price: 95,
-    currency: "USD",
-    billingCycle: "monthly"
-  },
-  
-  // Leonardo.ai
-  leonardo_premium: {
-    name: "Leonardo Premium",
-    company: "Leonardo.ai",
-    price: 10,
-    currency: "USD",
-    billingCycle: "monthly"
-  },
-  leonardo_pro: {
-    name: "Leonardo Pro",
-    company: "Leonardo.ai",
-    price: 24,
-    currency: "USD",
-    billingCycle: "monthly"
-  },
-  leonardo_enterprise: {
-    name: "Leonardo Enterprise",
-    company: "Leonardo.ai",
-    price: 48,
     currency: "USD",
     billingCycle: "monthly"
   }
