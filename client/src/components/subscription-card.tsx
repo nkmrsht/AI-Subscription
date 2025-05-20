@@ -37,7 +37,9 @@ export function SubscriptionCard({
       <CardContent className="p-5">
         <div className="flex items-start justify-between mb-3">
           <div className="flex items-center">
-            <ServiceLogoSimple serviceName={subscription.name} className="w-10 h-10 rounded-lg mr-3" />
+            <div className="w-10 h-10 rounded-lg mr-3 overflow-hidden flex-shrink-0">
+              <ServiceLogoSimple serviceName={subscription.name} />
+            </div>
             <div>
               <h3 className="font-bold text-neutral-800">{subscription.name}</h3>
               <div className="text-sm text-neutral-500">{subscription.company}</div>

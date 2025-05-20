@@ -68,7 +68,15 @@ export function ServiceLogoSimple({ serviceName, className = '' }: ServiceLogoSi
   return (
     <div 
       className={`flex items-center justify-center font-bold text-white ${className}`}
-      style={{ backgroundColor: bgColor }}
+      style={{ 
+        backgroundColor: bgColor,
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontSize: '0.875rem' // text-sm相当のサイズに統一
+      }}
     >
       {code}
     </div>
