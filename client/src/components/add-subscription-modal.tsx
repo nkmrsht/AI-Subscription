@@ -147,19 +147,43 @@ export function AddSubscriptionModal({
     ? price 
     : price * (exchangeRates[currency] || 1);
 
-  // Calculate monthly JPY
+  // Calculate monthly JPY based on billing cycle
   const monthlyJPY = (() => {
     let amount = calculatedJPY;
-    if (billingCycle === "yearly") {
+    
+    // 選択されたプランから月額を計算（正確な割引率を反映）
+    if (selectedPlan && billingCycle === "yearly" && selectedPlan.pricing.yearly && selectedPlan.pricing.monthly) {
+      // 年払い料金の実際の月額換算（プランに定義されている実際の年払い料金を使用）
+      const yearlyPriceInJPY = selectedPlan.pricing.yearly.price * 
+        (selectedPlan.pricing.yearly.currency === "JPY" ? 1 : exchangeRates[selectedPlan.pricing.yearly.currency] || 1);
+      amount = yearlyPriceInJPY / 12;
+    } else if (billingCycle === "yearly") {
+      // プラン詳細がない場合の標準計算
       amount = amount / 12;
     } else if (billingCycle === "quarterly") {
       amount = amount / 3;
     }
+    
     return amount;
   })();
 
-  // 年間総額
-  const yearlyTotal = monthlyJPY * 12;
+  // Calculate yearly JPY total, preserving any discounts
+  const yearlyTotal = (() => {
+    // 選択されたプランから年額を計算（正確な割引率を反映）
+    if (selectedPlan && selectedPlan.pricing.yearly) {
+      // プランに年払いオプションがある場合、その金額を使用
+      const yearlyPrice = selectedPlan.pricing.yearly.price;
+      return selectedPlan.pricing.yearly.currency === "JPY" 
+        ? yearlyPrice 
+        : yearlyPrice * (exchangeRates[selectedPlan.pricing.yearly.currency] || 1);
+    } else if (billingCycle === "yearly") {
+      // 既に年払いの場合はそのまま
+      return calculatedJPY;
+    } else {
+      // その他の場合は月額から年間換算
+      return monthlyJPY * 12;
+    }
+  })();
 
   const handleSave = () => {
     const newSubscription: Omit<AIService, "id"> = {
